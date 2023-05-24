@@ -1,0 +1,55 @@
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h2>Ships</h2>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Bort Number</th>
+                        <th>Country</th>
+                        <th>Tonnage</th>
+                        <th>Sediment</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let ship of data.ships" (click)="onShipSelected(ship)"
+                        [ngClass]="{ 'selected': ship === selectedShip }">
+                        <td>{{ship.name}}</td>
+                        <td>{{ship.bortNum}}</td>
+                        <td>{{ship.country}}</td>
+                        <td>{{ship.tonnage}}</td>
+                        <td>{{ship.sediment}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="col">
+            <h2>Piers</h2>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Pier Name</th>
+                        <th>Number</th>
+                        <th>Capacity</th>
+                        <th>Tonnage</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let pier of data.piers" (click)="onPierSelected(pier)"
+                        [ngClass]="{ 'selected': pier === selectedPier }">
+                        <td>{{pier.port}}</td>
+                        <td>{{pier.number}}</td>
+                        <td>{{pier.capacity}}</td>
+                        <td>{{pier.tonnage}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="onCancelClick()">Cancel</button>
+        <button type="button" class="btn btn-primary" (click)="onSaveClick()">Save</button>
+    </div>
+</div>

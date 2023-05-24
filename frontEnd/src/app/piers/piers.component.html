@@ -1,0 +1,132 @@
+<div class="container">
+    <form [formGroup]="profileForm" (ngSubmit)="onSubmit()" class="row">
+
+        <div class="col">
+            <label>
+                Port Name:
+                <input type="text" formControlName="port" required class="form-control">
+            </label>
+            <div
+                *ngIf="profileForm.get('port')?.invalid && (profileForm.get('port')?.dirty || profileForm.get('port')?.touched)">
+                <div *ngIf="profileForm.get('port')?.errors?.['required']" class="alert alert-warning">Port name is
+                    required.
+                </div>
+                <div *ngIf="profileForm.get('port')?.errors?.['minlength']" class="alert alert-warning">Port name must
+                    be at
+                    least 3 characters long.
+                </div>
+                <div *ngIf="profileForm.get('port')?.errors?.['maxlength']" class="alert alert-warning">Port name cannot
+                    be
+                    longer than 50 characters.
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <label>
+                Number:
+                <input type="text" formControlName="number" required class="form-control">
+            </label>
+            <div
+                *ngIf="profileForm.get('number')?.invalid && (profileForm.get('number')?.dirty || profileForm.get('number')?.touched)">
+                <div *ngIf="profileForm.get('number')?.errors?.['required']" class="alert alert-warning">number is
+                    required.</div>
+                <div *ngIf="profileForm.get('number')?.errors?.['minlength']" class="alert alert-warning">number must
+                    be at least 5 characters
+                    long.
+                </div>
+                <div *ngIf="profileForm.get('number')?.errors?.['maxlength']" class="alert alert-warning">number
+                    cannot be longer than 50
+                    characters.
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <label>
+                Capacity:
+                <input type="text" formControlName="capacity" required class="form-control">
+            </label>
+            <div
+                *ngIf="profileForm.get('capacity')?.invalid && (profileForm.get('capacity')?.dirty || profileForm.get('capacity')?.touched)">
+                <div *ngIf="profileForm.get('capacity')?.errors?.['required']" class="alert alert-warning">capacity is
+                    required.</div>
+                <div *ngIf="profileForm.get('capacity')?.errors?.['minlength']" class="alert alert-warning">capacity
+                    must be
+                    at least 6 characters long.
+                </div>
+
+            </div>
+        </div>
+
+        <div class="col">
+            <label>
+                Tonnage:
+                <input type="text" formControlName="tonnage" required class="form-control">
+            </label>
+            <div
+                *ngIf="profileForm.get('tonnage')?.invalid && (profileForm.get('tonnage')?.dirty || profileForm.get('tonnage')?.touched)">
+                <div *ngIf="profileForm.get('tonnage')?.errors?.['required']" class="alert alert-warning">tonnage is
+                    required.</div>
+                <div *ngIf="profileForm.get('tonnage')?.errors?.['minlength']" class="alert alert-warning">tonnage must
+                    be at least 3 characters
+                    long.
+                </div>
+                <div *ngIf="profileForm.get('tonnage')?.errors?.['maxlength']" class="alert alert-warning">tonnage
+                    cannot be longer than 100
+                    characters.
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <button type="submit" class="btn btn-primary">Submit</button>
+
+            <div *ngIf="!profileForm.valid && (profileForm.dirty || profileForm.touched)" class="alert alert-warning">
+                Please correct the errors above before submitting.
+            </div>
+        </div>
+
+    </form>
+</div>
+<br />
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h3>Port Information</h3>
+        </div>
+    </div>
+    <div class="row" *ngIf="piers.length > 0">
+        <div class="col-md-12">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Port Name</th>
+                        <th>Number</th>
+                        <th>Capacity</th>
+                        <th>Tonnage</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let pier of piers">
+                        <td>{{pier.port}}</td>
+                        <td>{{pier.number}}</td>
+                        <td>{{pier.capacity}}</td>
+                        <td>{{pier.tonnage}}</td>
+                        <td>
+                            <button (click)="onDelete(pier)" class="btn btn-primary">Delete</button>
+                            <button (click)="onEdit(pier)" class="btn btn-primary"
+                                style="margin-left: 10px;">Edit</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row" *ngIf="piers.length === 0">
+        <div class="col-md-12">
+            <p>No piers found. Please add.</p>
+        </div>
+    </div>
+</div>

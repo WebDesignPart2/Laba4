@@ -1,0 +1,23 @@
+<div class="row">
+    <div class=" display-shipInPier">
+        <div class="col">
+            <h2>Pier</h2>
+            <div *ngIf="pierToView">
+                <p><strong>Pier Name:</strong> {{ pierToView.port }}</p>
+                <p><strong>Number:</strong> {{ pierToView.number }}</p>
+                <p><strong>Capacity:</strong> {{ pierToView.capacity }}</p>
+                <p><strong>Tonnage:</strong> {{ pierToView.tonnage }}</p>
+            </div>
+        </div>
+        <div class="col">
+            <h2>Ship</h2>
+            <div *ngIf="shipToView">
+                <p><strong>Name:</strong> {{ shipToView.name }}</p>
+                <p><strong>Bort Number:</strong> {{ shipToView.bortNum }}</p>
+                <p><strong>Country:</strong> {{ shipToView.country }}</p>
+                <p><strong>Tonnage:</strong> {{ shipToView.tonnage }}</p>
+                <p><strong>Sediment:</strong> {{ shipToView.sediment }}</p>
+            </div>
+        </div>
+    </div>
+</div>

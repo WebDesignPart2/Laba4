@@ -1,0 +1,39 @@
+<button (click)="OnAdd()" class="btn btn-primary">park Ship on Pier</button>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h3>Ship In Piers Information</h3>
+        </div>
+    </div>
+    <div class="row" *ngIf="shipInPiers.length > 0">
+        <div class="col-md-12">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Pier Id</th>
+                        <th>Ship Id</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let shipInPiers of shipInPiers">
+                        <td>{{shipInPiers.pierId}}</td>
+                        <td>{{shipInPiers.shipId}}</td>
+                        <td>
+                            <button (click)="onDelete(shipInPiers)" class="btn btn-primary">Delete</button>
+                            <button (click)="onView(shipInPiers.shipId,shipInPiers.pierId)" class="btn btn-primary"
+                                style="margin-left: 10px;">View</button>
+                            <button (click)="onEdit(shipInPiers)" class="btn btn-primary"
+                                style="margin-left: 10px;">Edit</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row" *ngIf="shipInPiers.length === 0">
+        <div class="col-md-12">
+            <p>No ports found. Please add.</p>
+        </div>
+    </div>
+</div>

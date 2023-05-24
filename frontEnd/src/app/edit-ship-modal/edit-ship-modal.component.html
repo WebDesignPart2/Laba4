@@ -1,0 +1,89 @@
+<div class="edit-modal">
+    <h1>Edit Ship</h1>
+    <form [formGroup]="editForm">
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" formControlName="name" class="form-control" />
+            <div
+                *ngIf="editForm.get('name')?.invalid && (editForm.get('name')?.dirty || editForm.get('name')?.touched)">
+                <div *ngIf="editForm.get('name')?.errors?.['required']" class="alert alert-warning">Name is required.
+                </div>
+                <div *ngIf="editForm.get('name')?.errors?.['minlength']" class="alert alert-warning">Name must be at
+                    least 3 characters long.
+                </div>
+                <div *ngIf="editForm.get('name')?.errors?.['maxlength']" class="alert alert-warning">Name cannot be
+                    longer than 50 characters.
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="country">Country</label>
+            <input type="text" id="country" formControlName="country" class="form-control" />
+            <div
+                *ngIf="editForm.get('country')?.invalid && (editForm.get('country')?.dirty || editForm.get('country')?.touched)">
+                <div *ngIf="editForm.get('country')?.errors?.['required']" class="alert alert-warning">country is
+                    required.</div>
+                <div *ngIf="editForm.get('country')?.errors?.['minlength']" class="alert alert-warning">country must
+                    be at least 5 characters
+                    long.
+                </div>
+                <div *ngIf="editForm.get('country')?.errors?.['maxlength']" class="alert alert-warning">country
+                    cannot be longer than 50
+                    characters.
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="bortNum">Bort Number</label>
+            <input type="text" id="bortNum" formControlName="bortNum" class="form-control" />
+            <div
+                *ngIf="editForm.get('bortNum')?.invalid && (editForm.get('bortNum')?.dirty || editForm.get('bortNum')?.touched)">
+                <div *ngIf="editForm.get('bortNum')?.errors?.['required']" class="alert alert-warning">bortNum is
+                    required.</div>
+                <div *ngIf="editForm.get('bortNum')?.errors?.['minlength']" class="alert alert-warning">bortNum must be
+                    at least 6 characters long.
+                </div>
+
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="tonnage">tonnage</label>
+            <input id="tonnage" formControlName="tonnage" class="form-control" />
+            <div
+                *ngIf="editForm.get('tonnage')?.invalid && (editForm.get('tonnage')?.dirty || editForm.get('tonnage')?.touched)">
+                <div *ngIf="editForm.get('tonnage')?.errors?.['required']" class="alert alert-warning">tonnage is
+                    required.</div>
+                <div *ngIf="editForm.get('tonnage')?.errors?.['minlength']" class="alert alert-warning">tonnage must
+                    be at least 3 characters
+                    long.
+                </div>
+                <div *ngIf="editForm.get('tonnage')?.errors?.['maxlength']" class="alert alert-warning">tonnage
+                    cannot be longer than 100
+                    characters.
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="sediment">sediment</label>
+            <input id="sediment" formControlName="sediment" class="form-control" />
+            <div
+                *ngIf="editForm.get('sediment')?.invalid && (editForm.get('sediment')?.dirty || editForm.get('sediment')?.touched)">
+                <div *ngIf="editForm.get('sediment')?.errors?.['required']" class="alert alert-warning">sediment is
+                    required.</div>
+                <div *ngIf="editForm.get('sediment')?.errors?.['minlength']" class="alert alert-warning">sediment must
+                    be at least 3 characters
+                    long.
+                </div>
+                <div *ngIf="editForm.get('sediment')?.errors?.['maxlength']" class="alert alert-warning">sediment
+                    cannot be longer than 100
+                    characters.
+                </div>
+            </div>
+        </div>
+    </form>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="onCancelClick()">Cancel</button>
+        <button type="button" class="btn btn-primary" (click)="onSaveClick()"
+            [disabled]="editForm.invalid">Save</button>
+    </div>
+</div>

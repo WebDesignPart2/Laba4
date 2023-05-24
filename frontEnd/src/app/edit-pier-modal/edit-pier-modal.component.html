@@ -1,0 +1,73 @@
+<div class="edit-modal">
+    <h1>Edit Pier</h1>
+    <form [formGroup]="editForm">
+        <div class="form-group">
+            <label for="port">port</label>
+            <input type="text" id="port" formControlName="port" class="form-control" />
+            <div
+                *ngIf="editForm.get('port')?.invalid && (editForm.get('port')?.dirty || editForm.get('port')?.touched)">
+                <div *ngIf="editForm.get('port')?.errors?.['required']" class="alert alert-warning">port is required.
+                </div>
+                <div *ngIf="editForm.get('port')?.errors?.['minlength']" class="alert alert-warning">port must be at
+                    least 3 characters long.
+                </div>
+                <div *ngIf="editForm.get('port')?.errors?.['maxlength']" class="alert alert-warning">port cannot be
+                    longer than 50 characters.
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="number">number</label>
+            <input type="text" id="number" formControlName="number" class="form-control" />
+            <div
+                *ngIf="editForm.get('number')?.invalid && (editForm.get('number')?.dirty || editForm.get('number')?.touched)">
+                <div *ngIf="editForm.get('number')?.errors?.['required']" class="alert alert-warning">number is
+                    required.</div>
+                <div *ngIf="editForm.get('number')?.errors?.['minlength']" class="alert alert-warning">number must
+                    be at least 5 characters
+                    long.
+                </div>
+                <div *ngIf="editForm.get('number')?.errors?.['maxlength']" class="alert alert-warning">number
+                    cannot be longer than 50
+                    characters.
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="capacity">capacity</label>
+            <input type="text" id="capacity" formControlName="capacity" class="form-control" />
+            <div
+                *ngIf="editForm.get('capacity')?.invalid && (editForm.get('capacity')?.dirty || editForm.get('capacity')?.touched)">
+                <div *ngIf="editForm.get('capacity')?.errors?.['required']" class="alert alert-warning">capacity is
+                    required.</div>
+                <div *ngIf="editForm.get('capacity')?.errors?.['minlength']" class="alert alert-warning">capacity must
+                    be
+                    at least 2 characters long.
+                </div>
+
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="tonnage">tonnage</label>
+            <input id="tonnage" formControlName="tonnage" class="form-control" />
+            <div
+                *ngIf="editForm.get('tonnage')?.invalid && (editForm.get('tonnage')?.dirty || editForm.get('tonnage')?.touched)">
+                <div *ngIf="editForm.get('tonnage')?.errors?.['required']" class="alert alert-warning">tonnage is
+                    required.</div>
+                <div *ngIf="editForm.get('tonnage')?.errors?.['minlength']" class="alert alert-warning">tonnage must
+                    be at least 3 characters
+                    long.
+                </div>
+                <div *ngIf="editForm.get('tonnage')?.errors?.['maxlength']" class="alert alert-warning">tonnage
+                    cannot be longer than 100
+                    characters.
+                </div>
+            </div>
+        </div>
+    </form>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="onCancelClick()">Cancel</button>
+        <button type="button" class="btn btn-primary" (click)="onSaveClick()"
+            [disabled]="editForm.invalid">Save</button>
+    </div>
+</div>
