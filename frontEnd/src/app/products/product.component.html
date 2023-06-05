@@ -1,0 +1,110 @@
+<div class="container">
+    <form [formGroup]="profileForm" (ngSubmit)="onSubmit()" class="row">
+
+        <div class="col">
+            <label>
+                Code:
+                <input type="text" formControlName="code" required class="form-control">
+            </label>
+            <div
+                *ngIf="profileForm.get('code')?.invalid && (profileForm.get('code')?.dirty || profileForm.get('code')?.touched)">
+                <div *ngIf="profileForm.get('code')?.errors?.['required']" class="alert alert-warning">code name is
+                    required.
+                </div>
+                <div *ngIf="profileForm.get('code')?.errors?.['minlength']" class="alert alert-warning">code name must
+                    be at
+                    least 3 characters long.
+                </div>
+                <div *ngIf="profileForm.get('code')?.errors?.['maxlength']" class="alert alert-warning">code name cannot
+                    be
+                    longer than 50 characters.
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <label>
+                name:
+                <input type="text" formControlName="name" required class="form-control">
+            </label>
+            <div
+                *ngIf="profileForm.get('name')?.invalid && (profileForm.get('name')?.dirty || profileForm.get('name')?.touched)">
+                <div *ngIf="profileForm.get('name')?.errors?.['required']" class="alert alert-warning">name is
+                    required.</div>
+                <div *ngIf="profileForm.get('name')?.errors?.['minlength']" class="alert alert-warning">name must
+                    be at least 5 characters
+                    long.
+                </div>
+                <div *ngIf="profileForm.get('name')?.errors?.['maxlength']" class="alert alert-warning">name
+                    cannot be longer than 50
+                    characters.
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <label>
+                Сountry:
+                <input type="text" formControlName="country" required class="form-control">
+            </label>
+            <div
+                *ngIf="profileForm.get('country')?.invalid && (profileForm.get('country')?.dirty || profileForm.get('country')?.touched)">
+                <div *ngIf="profileForm.get('country')?.errors?.['required']" class="alert alert-warning">country is
+                    required.</div>
+                <div *ngIf="profileForm.get('country')?.errors?.['minlength']" class="alert alert-warning">country
+                    must be
+                    at least 6 characters long.
+                </div>
+
+            </div>
+        </div>
+
+        <div class="col">
+            <button type="submit" class="btn btn-primary">Submit</button>
+
+            <div *ngIf="!profileForm.valid && (profileForm.dirty || profileForm.touched)" class="alert alert-warning">
+                Please correct the errors above before submitting.
+            </div>
+        </div>
+
+    </form>
+</div>
+<br />
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h3>Product Information</h3>
+        </div>
+    </div>
+    <div class="row" *ngIf="products.length > 0">
+        <div class="col-md-12">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Code</th>
+                        <th>Name</th>
+                        <th>Country</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let product of products">
+                        <td>{{product.code}}</td>
+                        <td>{{product.name}}</td>
+                        <td>{{product.country}}</td>
+                        <td>
+                            <button (click)="onDelete(product)" class="btn btn-primary">Delete</button>
+                            <button (click)="onEdit(product)" class="btn btn-primary"
+                                style="margin-left: 10px;">Edit</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row" *ngIf="products.length === 0">
+        <div class="col-md-12">
+            <p>No products found. Please add.</p>
+        </div>
+    </div>
+</div>

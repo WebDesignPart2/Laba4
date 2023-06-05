@@ -1,0 +1,110 @@
+<div class="container">
+    <form [formGroup]="profileForm" (ngSubmit)="onSubmit()" class="row">
+
+        <div class="col">
+            <label>
+                Name:
+                <input type="text" formControlName="name" required class="form-control">
+            </label>
+            <div
+                *ngIf="profileForm.get('name')?.invalid && (profileForm.get('name')?.dirty || profileForm.get('name')?.touched)">
+                <div *ngIf="profileForm.get('name')?.errors?.['required']" class="alert alert-warning">Name is required.
+                </div>
+                <div *ngIf="profileForm.get('name')?.errors?.['minlength']" class="alert alert-warning">Name must be at
+                    least 3 characters long.
+                </div>
+                <div *ngIf="profileForm.get('name')?.errors?.['maxlength']" class="alert alert-warning">Name cannot be
+                    longer than 50 characters.
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <label>
+                capacity:
+                <input type="text" formControlName="capacity" required class="form-control">
+            </label>
+            <div
+                *ngIf="profileForm.get('capacity')?.invalid && (profileForm.get('capacity')?.dirty || profileForm.get('capacity')?.touched)">
+                <div *ngIf="profileForm.get('capacity')?.errors?.['required']" class="alert alert-warning">capacity is
+                    required.</div>
+                <div *ngIf="profileForm.get('capacity')?.errors?.['minlength']" class="alert alert-warning">capacity must
+                    be at least 3 characters
+                    long.
+                </div>
+                <div *ngIf="profileForm.get('capacity')?.errors?.['maxlength']" class="alert alert-warning">capacity
+                    cannot be longer than 100
+                    characters.
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <label>
+                address:
+                <input type="text" formControlName="address" required class="form-control">
+            </label>
+            <div
+                *ngIf="profileForm.get('address')?.invalid && (profileForm.get('address')?.dirty || profileForm.get('address')?.touched)">
+                <div *ngIf="profileForm.get('address')?.errors?.['required']" class="alert alert-warning">address is
+                    required.</div>
+                <div *ngIf="profileForm.get('address')?.errors?.['minlength']" class="alert alert-warning">address must
+                    be at least 3 characters
+                    long.
+                </div>
+                <div *ngIf="profileForm.get('address')?.errors?.['maxlength']" class="alert alert-warning">address
+                    cannot be longer than 100
+                    characters.
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <button type="submit" class="btn btn-primary">Submit</button>
+
+            <div *ngIf="!profileForm.valid && (profileForm.dirty || profileForm.touched)" class="alert alert-warning">
+                Please correct the errors above before submitting.
+            </div>
+        </div>
+
+    </form>
+</div>
+<br />
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h3>Shop Information</h3>
+        </div>
+    </div>
+    <div class="row" *ngIf="shops.length > 0">
+        <div class="col-md-12">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Capacity</th>
+                        <th>Address</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let shop of shops">
+                        <td>{{shop.name}}</td>
+                        <td>{{shop.capacity}}</td>
+                        <td>{{shop.address}}</td>
+                        <td>
+                            <button (click)="onDelete(shop)" class="btn btn-primary">Delete</button>
+                            <button (click)="onEdit(shop)" class="btn btn-primary"
+                                style="margin-left: 10px;">Edit</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row" *ngIf="shops.length === 0">
+        <div class="col-md-12">
+            <p>No shops found. Please add.</p>
+        </div>
+    </div>
+</div>

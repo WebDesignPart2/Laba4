@@ -1,0 +1,20 @@
+<div class="row">
+    <div class=" display-shipInPier">
+        <div class="col">
+            <h2>Product</h2>
+            <div *ngIf="productToView">
+                <p><strong>Code:</strong> {{ productToView.code }}</p>
+                <p><strong>Name:</strong> {{ productToView.name }}</p>
+                <p><strong>Country:</strong> {{ productToView.country }}</p>
+            </div>
+        </div>
+        <div class="col">
+            <h2>Storage</h2>
+            <div *ngIf="storageToView">
+                <p><strong>Number:</strong> {{ storageToView.number }}</p>
+                <p><strong>ShopId:</strong> {{ storageToView.shopId }}</p>
+                <p><strong>Capacity:</strong> {{ storageToView.capacity }}</p>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,11 +1,11 @@
-const pierRoutes = require('./pier');
-const shipRoute = require("./ship")
-const portRoute = require("./port")
-const shipInPierRoute = require("./shipInPier")
+const productRoutes = require('./product');
+const storageRoute = require("./storage")
+const shopRoute = require("./shop")
+const productInStorageRoute = require("./productInStorage")
 
 module.exports = function (app, db) {
-    pierRoutes(app, db);
-    shipRoute(app, db);
-    shipInPierRoute(app, db);
-    portRoute(app, db);
+    productRoutes(app, db);
+    storageRoute(app, db);
+    productInStorageRoute(app, db);
+    shopRoute(app, db);
 };

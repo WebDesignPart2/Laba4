@@ -1,0 +1,109 @@
+<div class="container">
+    <form [formGroup]="profileForm" (ngSubmit)="onSubmit()" class="row">
+
+        <div class="col">
+            <label>
+                number:
+                <input type="text" formControlName="number" required class="form-control">
+            </label>
+            <div
+                *ngIf="profileForm.get('number')?.invalid && (profileForm.get('number')?.dirty || profileForm.get('number')?.touched)">
+                <div *ngIf="profileForm.get('number')?.errors?.['required']" class="alert alert-warning">number is
+                    required.
+                </div>
+                <div *ngIf="profileForm.get('number')?.errors?.['minlength']" class="alert alert-warning">number must be
+                    at
+                    least 3 characters long.
+                </div>
+                <div *ngIf="profileForm.get('number')?.errors?.['maxlength']" class="alert alert-warning">number cannot
+                    be
+                    longer than 50 characters.
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <label>
+                shopId:
+                <input type="text" formControlName="shopId" required class="form-control">
+            </label>
+            <div
+                *ngIf="profileForm.get('shopId')?.invalid && (profileForm.get('shopId')?.dirty || profileForm.get('shopId')?.touched)">
+                <div *ngIf="profileForm.get('shopId')?.errors?.['required']" class="alert alert-warning">shopId is
+                    required.</div>
+                <div *ngIf="profileForm.get('shopId')?.errors?.['minlength']" class="alert alert-warning">shopId must
+                    be at least 5 characters
+                    long.
+                </div>
+                <div *ngIf="profileForm.get('shopId')?.errors?.['maxlength']" class="alert alert-warning">shopId
+                    cannot be longer than 50
+                    characters.
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <label>
+                Capacity:
+                <input type="text" formControlName="capacity" required class="form-control">
+            </label>
+            <div
+                *ngIf="profileForm.get('capacity')?.invalid && (profileForm.get('capacity')?.dirty || profileForm.get('capacity')?.touched)">
+                <div *ngIf="profileForm.get('capacity')?.errors?.['required']" class="alert alert-warning">capacity is
+                    required.</div>
+                <div *ngIf="profileForm.get('capacity')?.errors?.['minlength']" class="alert alert-warning">Capacity
+                    must be
+                    at least 6 characters long.
+                </div>
+
+            </div>
+        </div>
+
+        <div class="col">
+            <button type="submit" class="btn btn-primary">Submit</button>
+
+            <div *ngIf="!profileForm.valid && (profileForm.dirty || profileForm.touched)" class="alert alert-warning">
+                Please correct the errors above before submitting.
+            </div>
+        </div>
+
+    </form>
+</div>
+<br />
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h3>Storage Information</h3>
+        </div>
+    </div>
+    <div class="row" *ngIf="storages.length > 0">
+        <div class="col-md-12">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Number</th>
+                        <th>Capacity</th>
+                        <th>shopId</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let storage of storages">
+                        <td>{{storage.number}}</td>
+                        <td>{{storage.capacity}}</td>
+                        <td>{{storage.shopId}}</td>
+                        <td>
+                            <button (click)="onDelete(storage)" class="btn btn-primary">Delete</button>
+                            <button (click)="onEdit(storage)" class="btn btn-primary"
+                                style="margin-left: 10px;">Edit</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row" *ngIf="storages.length === 0">
+        <div class="col-md-12">
+            <p>No storages found. Please add.</p>
+        </div>
+    </div>
+</div>

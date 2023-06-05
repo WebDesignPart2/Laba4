@@ -1,0 +1,39 @@
+<button (click)="OnAdd()" class="btn btn-primary">add product on storage</button>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h3>Product In Storage Information</h3>
+        </div>
+    </div>
+    <div class="row" *ngIf="productInStorages.length > 0">
+        <div class="col-md-12">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Product Id</th>
+                        <th>Storage Id</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let productInStorage of productInStorages">
+                        <td>{{productInStorage.productId}}</td>
+                        <td>{{productInStorage.storageId}}</td>
+                        <td>
+                            <button (click)="onDelete(productInStorage)" class="btn btn-primary">Delete</button>
+                            <button (click)="onView(productInStorage.storageId, productInStorage.productId)"
+                                class="btn btn-primary" style="margin-left: 10px;">View</button>
+                            <button (click)="onEdit(productInStorage)" class="btn btn-primary"
+                                style="margin-left: 10px;">Edit</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row" *ngIf="productInStorages.length === 0">
+        <div class="col-md-12">
+            <p>No storages found. Please add.</p>
+        </div>
+    </div>
+</div>

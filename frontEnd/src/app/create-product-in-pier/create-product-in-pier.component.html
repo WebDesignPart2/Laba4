@@ -1,0 +1,49 @@
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h2>Storages</h2>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>number</th>
+                        <th>shopId</th>
+                        <th>capacity</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let storage of data.storages" (click)="onShipSelected(storage)"
+                        [ngClass]="{ 'selected': storage === selectedStorage }">
+                        <td>{{storage.number}}</td>
+                        <td>{{storage.shopId}}</td>
+                        <td>{{storage.capacity}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="col">
+            <h2>Products</h2>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Code</th>
+                        <th>Name</th>
+                        <th>Country</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let product of data.products" (click)="onPierSelected(product)"
+                        [ngClass]="{ 'selected': product === selectedProduct }">
+                        <td>{{product.code}}</td>
+                        <td>{{product.name}}</td>
+                        <td>{{product.country}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="onCancelClick()">Cancel</button>
+        <button type="button" class="btn btn-primary" (click)="onSaveClick()">Save</button>
+    </div>
+</div>

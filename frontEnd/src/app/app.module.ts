@@ -7,34 +7,34 @@ import { HttpClientModule } from '@angular/common/http';
 import { HeaderComponent } from './header/header.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule } from '@angular/router';
-import { PortsComponent } from './ports/ports.component';
+import { ShopsComponent } from './shops/shops.component';
 import { HomeComponent } from './home/home.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { PiersComponent } from './piers/piers.component';
-import { EditPortModal } from './edit-port-modal/edit-port-modal.component';
+import { ProductComponent } from './products/product.component';
+import { EditPortModal } from './edit-shop-modal/edit-shop-modal.component';
 import { MatDialogModule } from '@angular/material/dialog';
-import { EditPierModalComponent } from './edit-pier-modal/edit-pier-modal.component';
-import { ShipsComponent } from './ships/ships.component';
-import { EditShipModalComponent } from './edit-ship-modal/edit-ship-modal.component';
-import { ShipInPierComponent } from './ship-in-pier/ship-in-pier.component';
-import { CreateShipInPierComponent } from './create-ship-in-pier/create-ship-in-pier.component';
-import { ViewShipInPierComponent } from './view-ship-in-pier/view-ship-in-pier.component';
+import { EditProductModalComponent } from './edit-product-modal/edit-product-modal.component';
+import { StoragesComponent } from './storages/storages.component';
+import { EditShipModalComponent } from './edit-storage-modal/edit-storage-modal.component';
+import { ProductInStorageComponent } from './product-in-storage/product-in-storage.component';
+import { CreateProductInStorageComponent } from './create-product-in-pier/create-product-in-pier.component';
+import { ViewProductInStorageComponent } from './view-product-in-storage/view-product-in-storage.component';
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    PortsComponent,
+    ShopsComponent,
     HomeComponent,
     PageNotFoundComponent,
-    PiersComponent,
+    ProductComponent,
     EditPortModal,
-    EditPierModalComponent,
-    ShipsComponent,
+    EditProductModalComponent,
+    StoragesComponent,
     EditShipModalComponent,
-    ShipInPierComponent,
-    CreateShipInPierComponent,
-    ViewShipInPierComponent,
+    ProductInStorageComponent,
+    CreateProductInStorageComponent,
+    ViewProductInStorageComponent,
   ],
   imports: [
     ReactiveFormsModule,
@@ -44,11 +44,11 @@ import { ViewShipInPierComponent } from './view-ship-in-pier/view-ship-in-pier.c
     MatDialogModule,
     NgbModule,
     RouterModule.forRoot([
-      { path: 'ports', component: PortsComponent },
-      { path: 'piers', component: PiersComponent },
-      { path: 'ships', component: ShipsComponent },
+      { path: 'shops', component: ShopsComponent },
+      { path: 'products', component: ProductComponent },
+      { path: 'storages', component: StoragesComponent },
       { path: 'home', component: HomeComponent },
-      { path: 'shipInPire', component: ShipInPierComponent },
+      { path: 'productInStorage', component: ProductInStorageComponent },
       { path: '', redirectTo: '/home', pathMatch: 'full' },
       { path: '**', component: PageNotFoundComponent },
     ]),

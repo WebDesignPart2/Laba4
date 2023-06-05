@@ -2,10 +2,6 @@ const bodyParser = require('body-parser')
 const config = require('./config');
 const { MongoClient, ServerApiVersion } = require('mongodb');
 
-
-// const notFoundMiddleware = require('./middlewares/not_found')
-// const errorMiddleware = require('./middlewares/error')
-
 const express = require('express')
 const app = express()
 
